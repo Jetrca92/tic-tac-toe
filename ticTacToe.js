@@ -7,9 +7,19 @@ for (let i = 0; i < 9; i++) {
     grid.appendChild(element);
 }
 
+const Player = (sign) => {
+    this.sign = sign;
+    const getSign = () => {
+        return sign;
+    };
+    return { getSign };
+};
+const gameBoard = ["", "", "", "", "", "", "", "", ""];
+
 const elements = document.querySelectorAll('.element');
 elements.forEach((element) => {
     element.addEventListener('click', () => {
+        document.querySelector('player-text')
         element.innerHTML = "X";
     })
 })
