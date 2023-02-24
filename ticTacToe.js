@@ -60,37 +60,41 @@ elements.forEach((element) => {
     element.addEventListener('click', () => {
         const playerText = document.querySelector('.player-text').innerHTML;
         let log = checkWinner(gameBoard);
-        roundCount += 1
-        
         if (playerText === "Player X's turn") {
-            element.innerHTML = "X";
-            gameBoard[element.id] = "X";
-            log = checkWinner(gameBoard);
-            console.log(log);
-            if ((log === "Player X has won!") || (log === "Player O has won!")) {
-                document.querySelector('.player-text').innerHTML = log; 
-            }
-            else if ((log === "It's a draw!") && (roundCount === 9)) {
-                document.querySelector('.player-text').innerHTML = log;
-            }
-            else {
-                document.querySelector('.player-text').innerHTML = "Player O's turn"    
+            // Check if spot free
+            if (gameBoard[element.id] === "") {
+                roundCount += 1
+                element.innerHTML = "X";
+                gameBoard[element.id] = "X";
+                log = checkWinner(gameBoard);
+                if ((log === "Player X has won!") || (log === "Player O has won!")) {
+                    document.querySelector('.player-text').innerHTML = log; 
+                }
+                else if ((log === "It's a draw!") && (roundCount === 9)) {
+                    document.querySelector('.player-text').innerHTML = log;
+                }
+                else {
+                    document.querySelector('.player-text').innerHTML = "Player O's turn"    
+                }
             }
         }
         if (playerText === "Player O's turn") {
-            element.innerHTML = "O";
-            gameBoard[element.id] = "O";
-            log = checkWinner(gameBoard);
-            console.log(log);
-            if ((log === "Player X has won!") || (log === "Player O has won!")) {
-                document.querySelector('.player-text').innerHTML = log;
+            // Check if spot free
+            if (gameBoard[element.id] === "") {
+                roundCount += 1
+                element.innerHTML = "O";
+                gameBoard[element.id] = "O";
+                log = checkWinner(gameBoard);
+                if ((log === "Player X has won!") || (log === "Player O has won!")) {
+                    document.querySelector('.player-text').innerHTML = log;
+                }
+                else if ((log === "It's a draw!") && (roundCount === 9)) {
+                    document.querySelector('.player-text').innerHTML = log; 
+                }
+                else {
+                    document.querySelector('.player-text').innerHTML = "Player X's turn"
+                } 
             }
-            else if ((log === "It's a draw!") && (roundCount === 9)) {
-                document.querySelector('.player-text').innerHTML = log; 
-            }
-            else {
-                document.querySelector('.player-text').innerHTML = "Player X's turn"
-            } 
         }
     })
 })
