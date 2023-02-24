@@ -70,10 +70,12 @@ elements.forEach((element) => {
             if ((log === "Player X has won!") || (log === "Player O has won!")) {
                 document.querySelector('.player-text').innerHTML = log; 
             }
-            if ((log === "It's a draw!") && (roundCount === 9)) {
+            else if ((log === "It's a draw!") && (roundCount === 9)) {
                 document.querySelector('.player-text').innerHTML = log;
             }
-            document.querySelector('.player-text').innerHTML = "Player O's turn"    
+            else {
+                document.querySelector('.player-text').innerHTML = "Player O's turn"    
+            }
         }
         if (playerText === "Player O's turn") {
             element.innerHTML = "O";
@@ -83,10 +85,12 @@ elements.forEach((element) => {
             if ((log === "Player X has won!") || (log === "Player O has won!")) {
                 document.querySelector('.player-text').innerHTML = log;
             }
-            if ((log === "It's a draw!") && (roundCount === 9)) {
+            else if ((log === "It's a draw!") && (roundCount === 9)) {
                 document.querySelector('.player-text').innerHTML = log; 
             }
-            document.querySelector('.player-text').innerHTML = "Player X's turn" 
+            else {
+                document.querySelector('.player-text').innerHTML = "Player X's turn"
+            } 
         }
     })
 })
